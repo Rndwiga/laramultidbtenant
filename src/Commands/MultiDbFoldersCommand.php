@@ -99,4 +99,4 @@ class MultiDbFoldersCommand extends Command
     {
         return app()->publicPath();
     }
-} 
+}

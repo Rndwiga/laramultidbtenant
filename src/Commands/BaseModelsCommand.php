@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace gamerwalt\LaraMultiDbTenant\Commands;
 
@@ -52,11 +52,12 @@ class BaseModelsCommand extends Command
      */
     public function handle()
     {
-        $this->kernel->call('make:model', ['name' => 'Tenant']);
-        $this->kernel->call('make:model', ['name' => 'TenantUser']);
-        $this->kernel->call('make:model', ['name' => 'TenantDatabase']);
+        // FIXME: make:model replaced with make:migration
+        $this->kernel->call('make:migration', ['name' => 'Tenant']);
+        $this->kernel->call('make:migration', ['name' => 'TenantUser']);
+        $this->kernel->call('make:migration', ['name' => 'TenantDatabase']);
 
         $this->info('Tenant, TenantUser, TenantDatabase models created successfully.');
         $this->info('Remember to set the relationships between Tenant, TenantUser, TenantDatabase as well as the default user model!');
     }
-} 
+}

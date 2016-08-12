@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace gamerwalt\LaraMultiDbTenant;
 
@@ -144,6 +144,10 @@ class MysqlDatabaseProvisioner implements IDatabaseProvisioner
      */
     private function migrateDatabase()
     {
+        // First - setup the database migration tables
+        $this->kernel->call('migrate:install', ['--database' => 'tenant_database']);
+
+        // Second - migrate the data tables
         $this->kernel->call('migrate', ['--path' => '/database/migrations/tenant', '--database' => 'tenant_database']);
     }
 
