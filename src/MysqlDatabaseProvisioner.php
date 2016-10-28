@@ -43,7 +43,7 @@ class MysqlDatabaseProvisioner implements IDatabaseProvisioner
      *
      * @return mixed
      */
-    public function provisionDatabase($host, $databaseName, $username, $password, $appHost = null)
+    public function provisionDatabase($host, $databaseName, $username, $password, $isDemo = false, $appHost = null)
     {
         if( !$appHost) {
             $appHost = $this->multiDbTenant->getApplicationHost();
@@ -53,7 +53,9 @@ class MysqlDatabaseProvisioner implements IDatabaseProvisioner
         $this->createDatabase($databaseName);
         $this->createUser($appHost, $databaseName, $username, $password);
         $this->migrateDatabase($databaseName, $host);
-        $this->seedDatabase();
+        if ($isDemo) {
+            $this->seedDatabase();
+        }
         //$this->createDefaultUser($databaseName, $defaultUserEmail, $defaultUserPassowrd);
         $this->disconnectFromHost();
     }
@@ -161,8 +163,6 @@ class MysqlDatabaseProvisioner implements IDatabaseProvisioner
         $createDefaultUserQuery = "INSERT INTO Users (email, password, remember_token, VALIDATED, user_type, created_at, updated_at) VALUES (" . $email . "', '" . $passwordHash . "', '0', '1', '0', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);";
 
         $this->execute();
-
-
     }
 
     /**
@@ -170,11 +170,11 @@ class MysqlDatabaseProvisioner implements IDatabaseProvisioner
      */
     private function migrateDatabase()
     {
-        // First - setup the database migration tables
-        $this->kernel->call('migrate:install', ['--database' => 'tenant_database']);
+        // Setup the database migration tables
+        // ** Disabled; throwing error for 'migration' table already exists!
+        //$this->kernel->call('migrate:install', ['--database' => 'tenant_database']);
 
-        // Second - migrate the data tables
-        //$this->kernel->call('migrate', ['--path' => '/database/migrations/tenant', '--database' => 'tenant_database', '--seed' => '']);
+        // Migrate the data tables
         $this->kernel->call('migrate', ['--path' => '/database/migrations/tenant', '--database' => 'tenant_database']);
     }
 
@@ -183,7 +183,6 @@ class MysqlDatabaseProvisioner implements IDatabaseProvisioner
      */
     private function seedDatabase()
     {
-        //$this->kernel->call('db:seed', ['--path' => '/database/seeds/tenant', '--database' => 'tenant_database']);
         $this->kernel->call('db:seed', ['--database' => 'tenant_database']);
     }
 
