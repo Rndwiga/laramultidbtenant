@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace gamerwalt\LaraMultiDbTenant\Contracts;
 
@@ -12,6 +12,8 @@ interface IDatabaseProvisioner
      * @param      $username
      * @param      $password
      * @param null $appHost
+     * @param      $defaultUserEmail
+     * @param      $defaultUserPassowrd
      *
      * @return mixed
      */
@@ -26,4 +28,4 @@ interface IDatabaseProvisioner
      * @return mixed
      */
     public function syncTenantDatabases($host, $databaseName);
-} 
+}

@@ -17,4 +17,4 @@ trait MigrateTenantDatabase
 
         $migrator->syncTenantDatabase($host, $databaseName);
     }
-} 
+}
