@@ -7,19 +7,19 @@ A sample laravel application that uses this package can be found at [github](htt
 # Installation #
 
 ```
-composer require gamerwalt/laramultidbtenant
+composer require rndwiga\MultiTenant
 ```
 Add the service providers to your application providers array in config/app.php
 A Facade is also available and can be added...
 
 ### Providers ###
 ```
-gamerwalt\LaraMultiDbTenant\LaraMultiDbTenantServiceProvider::class
+rndwiga\MultiTenant\LaraMultiDbTenantServiceProvider::class
 ```
 
 ### Facade ###
 ```
-'LaraMultiDbTenant' => gamerwalt\LaraMultiDbTenant\Facade::class
+'LaraMultiDbTenant' => rndwiga\MultiTenant\Facade::class
 ```
 
 ### Configuration Files ###
@@ -69,7 +69,7 @@ use MigrateTenantDatabase;
 ```
 Complete namespace for this is...
 ```
-use gamerwalt\LaraMultiDbTenant\Traits\MigrateTenantDatabase;
+use rndwiga\MultiTenant\Traits\MigrateTenantDatabase;
 ```
 ### Create your migration files ###
 This assumes you have already done...
@@ -116,7 +116,7 @@ This should show the code...
 ```
 
 # Questions #
-Twitter: [@gamerwalt](https://twitter.com/gamerwalt)
+Twitter: [@rndwiga254](https://twitter.com/rndwiga254)
 
 # Future #
 1. Do some clean up of the code.
