@@ -1,11 +1,11 @@
 {
-    "name": "gamerwalt/laramultidbtenant",
+    "name": "rndwiga\MultiTenant",
     "description": "This package is used to create and manage laravel multitenant applications",
     "license": "MIT",
     "authors": [
         {
-            "name": "Olawale Adewoyin",
-            "email": "gamerwalt@gmail.com"
+            "name": "Raphael Ndwiga",
+            "email": "raphndwi@gmail.com"
         }
     ],
     "require": {
@@ -23,7 +23,7 @@
     },
     "autoload": {
         "psr-4": {
-            "gamerwalt\\LaraMultiDbTenant\\": "src"
+            "rndwiga\\MultiTenant\\": "src"
         }
     },
     "minimum-stability":"dev"

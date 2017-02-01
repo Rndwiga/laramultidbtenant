@@ -1,6 +1,6 @@
 <?php
 
-namespace gamerwalt\LaraMultiDbTenant;
+namespace rndwiga\MultiTenant;
 
 class Facade extends \Illuminate\Support\Facades\Facade
 {

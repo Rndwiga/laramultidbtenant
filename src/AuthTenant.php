@@ -1,9 +1,9 @@
 <?php 
 
-namespace gamerwalt\LaraMultiDbTenant;
+namespace rndwiga\MultiTenant;
 
 use Closure;
-use gamerwalt\LaraMultiDbTenant\Traits\TenantConnector;
+use rndwiga\MultiTenant\Traits\TenantConnector;
 use Auth;
 
 class AuthTenant

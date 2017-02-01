@@ -1,6 +1,6 @@
 <?php
 
-namespace gamerwalt\LaraMultiDbTenant;
+namespace rndwiga\MultiTenant;
 
 use Illuminate\Config\Repository;
 

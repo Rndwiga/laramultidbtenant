@@ -1,8 +1,8 @@
 <?php
-namespace gamerwalt\LaraMultiDbTenant\Traits;
+namespace rndwiga\MultiTenant\Traits;
 
-use gamerwalt\LaraMultiDbTenant\Contracts\ITenantDatabase;
-use gamerwalt\LaraMultiDbTenant\TenantDatabaseException;
+use rndwiga\MultiTenant\Contracts\ITenantDatabase;
+use rndwiga\MultiTenant\TenantDatabaseException;
 
 trait TenantConnector
 {

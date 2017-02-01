@@ -1,9 +1,9 @@
 <?php
 
-namespace gamerwalt\LaraMultiDbTenant;
+namespace rndwiga\MultiTenant;
 
-use gamerwalt\LaraMultiDbTenant\Commands\BaseModelsCommand;
-use gamerwalt\LaraMultiDbTenant\Commands\MultiDbFoldersCommand;
+use rndwiga\MultiTenant\Commands\BaseModelsCommand;
+use rndwiga\MultiTenant\Commands\MultiDbFoldersCommand;
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\ServiceProvider;
 use App;
@@ -35,7 +35,7 @@ class LaraMultiDbTenantServiceProvider extends ServiceProvider
             return $laraMultiDbTenant;
         });
 
-        $this->app->alias('laramultitenantdb', 'gamerwalt\LaraMultiDbTenant\LaraMultiDbTenant');
+        $this->app->alias('laramultitenantdb', 'rndwiga\MultiTenant\LaraMultiDbTenant');
 
         $this->app['command.tenant.migrations'] = $this->app->share(
             function($app) {
@@ -110,7 +110,7 @@ class LaraMultiDbTenantServiceProvider extends ServiceProvider
         }
 
         //Changed: app['router'] to app
-        $this->app->middleware('authTenant', 'gamerwalt\LaraMultiDbTenant\AuthTenant');
+        $this->app->middleware('authTenant', 'rndwiga\MultiTenant\AuthTenant');
 
         $laraMultidbTenant = $this->app['laramultitenantdb'];
         $laraMultidbTenant->boot($tenantModel, $prefix);

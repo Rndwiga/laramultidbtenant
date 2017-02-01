@@ -1,8 +1,8 @@
 <?php
 
-namespace gamerwalt\LaraMultiDbTenant\Commands;
+namespace rndwiga\MultiTenant\Commands;
 
-use gamerwalt\LaraMultiDbTenant\LaraMultiDbTenant;
+use rndwiga\MultiTenant\LaraMultiDbTenant;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Console\Kernel;
 
@@ -23,7 +23,7 @@ class BaseModelsCommand extends Command
     protected $description = 'Create the tenant, tenant_user, tenant_database models';
 
     /**
-     * @type \gamerwalt\LaraMultiDbTenant\LaraMultiDbTenant
+     * @type \rndwiga\MultiTenant\LaraMultiDbTenant
      */
     private $multiDbTenant;
     /**
@@ -34,7 +34,7 @@ class BaseModelsCommand extends Command
     /**
      * Constructs the BaseModelsCommand
      *
-     * @param \gamerwalt\LaraMultiDbTenant\LaraMultiDbTenant $multiDbTenant
+     * @param \rndwiga\MultiTenant\LaraMultiDbTenant $multiDbTenant
      * @param \Illuminate\Contracts\Console\Kernel           $kernel
      */
     public function __construct(LaraMultiDbTenant $multiDbTenant, Kernel $kernel)

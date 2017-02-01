@@ -1,8 +1,8 @@
 <?php
 
-namespace gamerwalt\LaraMultiDbTenant\Commands;
+namespace rndwiga\MultiTenant\Commands;
 
-use gamerwalt\LaraMultiDbTenant\LaraMultiDbTenant;
+use rndwiga\MultiTenant\LaraMultiDbTenant;
 use Illuminate\Console\Command;
 
 
@@ -24,7 +24,7 @@ class MultiDbFoldersCommand extends Command
     protected $description = 'Create the template and tenant migration folders as well as the public folder for tenants';
 
     /**
-     * @type \gamerwalt\LaraMultiDbTenant\LaraMultiDbTenant
+     * @type \rndwiga\MultiTenant\LaraMultiDbTenant
      */
     private $multiDbTenant;
 
@@ -46,7 +46,7 @@ class MultiDbFoldersCommand extends Command
     /**
      * Constructs the MultiDbMigrationsCommand
      *
-     * @param \gamerwalt\LaraMultiDbTenant\LaraMultiDbTenant $multiDbTenant
+     * @param \rndwiga\MultiTenant\LaraMultiDbTenant $multiDbTenant
      */
     public function __construct(LaraMultiDbTenant $multiDbTenant)
     {

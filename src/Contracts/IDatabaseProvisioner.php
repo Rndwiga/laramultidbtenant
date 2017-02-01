@@ -1,6 +1,6 @@
 <?php
 
-namespace gamerwalt\LaraMultiDbTenant\Contracts;
+namespace rndwiga\MultiTenant\Contracts;
 
 interface IDatabaseProvisioner
 {

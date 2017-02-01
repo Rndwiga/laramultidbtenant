@@ -1,9 +1,9 @@
 <?php
 
-namespace gamerwalt\LaraMultiDbTenant;
+namespace rndwiga\MultiTenant;
 
 use Exception;
-use gamerwalt\LaraMultiDbTenant\Contracts\IDatabaseProvisioner;
+use rndwiga\MultiTenant\Contracts\IDatabaseProvisioner;
 use Illuminate\Contracts\Console\Kernel;
 use DB;
 use PDO;

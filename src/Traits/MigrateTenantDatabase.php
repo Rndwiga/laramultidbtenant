@@ -1,6 +1,6 @@
 <?php
 
-namespace gamerwalt\LaraMultiDbTenant\Traits;
+namespace rndwiga\MultiTenant\Traits;
 
 trait MigrateTenantDatabase
 {
