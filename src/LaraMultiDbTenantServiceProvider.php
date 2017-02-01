@@ -26,7 +26,8 @@ class LaraMultiDbTenantServiceProvider extends ServiceProvider
     public function register()
     {
         $configPath = __DIR__ . '/../config/laramultidbtenant.php';
-        $this->mergeConfigFrom($configPath, 'laramultidbtenant');
+        //$this->mergeConfigFrom($configPath, 'laramultidbtenant');
+        $this->mergeConfigFrom($this->getConfigPath(), 'laramultidbtenant'); // get config overrride
 
         $this->app->singleton('LaraMultiDbTenant', function($app) {
             $laraMultiDbTenant = new LaraMultiDbTenant($app['config'],$app);
@@ -51,15 +52,33 @@ class LaraMultiDbTenantServiceProvider extends ServiceProvider
         $this->commands(array('command.tenant.migrations'));
         $this->commands(array('command.tenant.basemodels'));
 
+        /*
         App::singleton('laramultitenantdb', function($app){
             return new LaraMultiDbTenant($app['config'],$app);
         });
+        */
 
+        $this->app->singleton('laramultitenantdb', function($app){
+            return new LaraMultiDbTenant($app['config'],$app);
+        });
+
+        /*
         App::singleton('tenantdatabaseprovisioner', function(){
             return new MysqlDatabaseProvisioner($this->app->make('Illuminate\Contracts\Console\Kernel'));
         });
+        */
 
+        $this->app->singleton('tenantdatabaseprovisioner', function($app){
+            return new MysqlDatabaseProvisioner($this->app->make('Illuminate\Contracts\Console\Kernel'));
+        });
+
+        /*
         App::singleton('authTenant', function(){
+            return new AuthTenant();
+        });
+        */
+
+        $this->app->singleton('authTenant', function($app){
             return new AuthTenant();
         });
     }
@@ -71,7 +90,9 @@ class LaraMultiDbTenantServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(Kernel $kernel)
+
+    // FIXME: Laravel requires Kernel injection, removed for Lumen.
+    public function boot() //Kernel $kernel
     {
         $app = $this->app;
 
@@ -88,7 +109,8 @@ class LaraMultiDbTenantServiceProvider extends ServiceProvider
             return;
         }
 
-        $this->app['router']->middleware('authTenant', 'gamerwalt\LaraMultiDbTenant\AuthTenant');
+        //Changed: app['router'] to app
+        $this->app->middleware('authTenant', 'gamerwalt\LaraMultiDbTenant\AuthTenant');
 
         $laraMultidbTenant = $this->app['laramultitenantdb'];
         $laraMultidbTenant->boot($tenantModel, $prefix);
