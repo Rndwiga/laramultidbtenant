@@ -26,8 +26,8 @@ class LaraMultiDbTenantServiceProvider extends ServiceProvider
     public function register()
     {
         $configPath = __DIR__ . '/../config/laramultidbtenant.php';
-        //$this->mergeConfigFrom($configPath, 'laramultidbtenant');
-        $this->mergeConfigFrom($this->getConfigPath(), 'laramultidbtenant'); // get config overrride
+        $this->mergeConfigFrom($configPath, 'laramultidbtenant');
+       // $this->mergeConfigFrom($this->getConfigPath(), 'laramultidbtenant'); // get config overrride
 
         $this->app->singleton('LaraMultiDbTenant', function($app) {
             $laraMultiDbTenant = new LaraMultiDbTenant($app['config'],$app);
